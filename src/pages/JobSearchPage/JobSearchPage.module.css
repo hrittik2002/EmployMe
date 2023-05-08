@@ -1,0 +1,105 @@
+.searchContainer{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 240, 240);
+}
+.searchInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(128, 128, 128, 0.712);
+    width: 20%;
+    height: 40%;
+    border-radius: 7px;
+
+}
+.searchInput input{
+    border: none;
+    width: 100%;
+}
+.searchInput input:focus{
+    border: none;
+    outline: none;
+}
+.locationInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(128, 128, 128, 0.712);
+    width: 10%;
+    margin-left: 20px;
+    height: 40%;
+    border-radius: 7px;
+}
+.locationInput input{
+    border: none;
+    width: 100%;
+}
+.locationInput input:focus{
+    border: none;
+    outline: none;
+}
+/* body */
+.body{
+    width: 100vw;
+    margin-top: 20px;
+    overflow-y: scroll;
+}
+.jobContainer{
+    background-color: rgb(240, 240, 240);
+    width: 86%;
+    height: 25vh;
+    margin-left: 7%;
+    margin-right: 7%;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.left{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    width: 80%;
+    height: 80%;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+}
+.right{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.right div{
+    display: flex;
+    margin: 5px 7%;
+    letter-spacing: 1px;
+}
+.title{
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.companyName{
+    font-size: 18px;
+    font-weight: 500;
+}
+.location{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
