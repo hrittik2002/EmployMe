@@ -30,3 +30,12 @@
     margin-right: 7%;
 
 }
+.navItem{
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+.navItem:hover{
+    background-color: rgba(128, 128, 128, 0.411);
+    border-radius: 7px;
+}

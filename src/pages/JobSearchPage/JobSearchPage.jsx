@@ -6,11 +6,18 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import Navbar from '../../components/Navbar/Navbar';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import WorkIcon from '@mui/icons-material/Work';
+import { useNavigate } from 'react-router-dom';
+import Lottie from "lottie-react";
+import noDataFoundAnimation from '../../assets/animations/noDataFound.json'
+
 const JobSearchPage = () => {
+    // states
     const [jobList , setJobList] = useState([]); 
     const [jobRole , setJobRole] = useState('');
-
     const [jobLocation , setJobLocation] = useState('');
+
+    // configarations
+    const navigate = useNavigate();
 
     const handleSearchJob = async() =>{
         console.log(jobRole)
@@ -23,16 +30,17 @@ const JobSearchPage = () => {
                 jobTitle : jobRes.job_title,
                 city : jobRes.job_city,
                 country : jobRes.job_country,
-                companyName : jobRes.employer_name
+                companyName : jobRes.employer_name,
+                image : jobRes.employer_logo
             }
             listofJob.push(job);
         }
         setJobList(listofJob)
     }
+    const detailsPageHandler = (id) => {
+        navigate(`/search/${id}`)
+    }
   return (
-    // <div>
-    //     <button onClick={handleSearchJob}>Search</button>
-    // </div>
     <div className={styles.parentContainer}>
         {/* Navbar */}
         <Navbar/>
@@ -50,24 +58,38 @@ const JobSearchPage = () => {
                 </div > 
         </div>
         {/* Jobs */}
+        {
+            jobList.length === 0 ?
+            (
+                <div className={styles.body2}>
+                <Lottie animationData={noDataFoundAnimation} style={{
+                height : "40%",
+                width : "40%",
+                zIndex : 1,
+            }}/>
+                </div>
+            )
+            :
         <div className={styles.body}>
             {
                 jobList.map((job , idx)=>(
                     <div key={idx} className={styles.jobContainer}>
                 <div className={styles.left}>
                     <div className={styles.logo}>
-                        <img src={"https://img.freepik.com/free-vector/company-concept-illustration_114360-2581.jpg?w=2000"} alt="" />
+                        <img src={job.image || "https://img.freepik.com/free-vector/company-concept-illustration_114360-2581.jpg?w=2000"} alt="" />
                     </div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.title}>{job.jobTitle} <WorkIcon style={{ color: 'brown' }}/></div>
                     <div className={styles.companyName}>{job.companyName}</div>
                     <div className={styles.location}>${job.city} , {job.country} <AddLocationIcon style={{ color: 'red' }}/></div>
+                    <div className={styles.details} onClick={()=>{detailsPageHandler(job.jobId)}}>Details</div>
                 </div>
             </div>
                 ))
             }
         </div>
+}
         </div>
   )
 }
