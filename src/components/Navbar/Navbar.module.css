@@ -21,7 +21,7 @@
 .navItems{
     display: flex;
     justify-content: space-between;
-    width: 35%;
+    width: 15%;
     align-items: center;
     color: white;
     font-size: 16px;
